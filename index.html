@@ -8,18 +8,19 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <style>
         body {
-            font-family: 'Inter', sans-serif; /* Using Inter as a default nice font */
-            background-color: #F5F5DC; /* Beige - base color */
-            color: #4A3B31; /* Dark brown for text */
+            font-family: 'Inter', sans-serif;
+            background-color: #FBF5EB; /* Cosmic Latte - warmer beige */
+            color: #5D4037; /* Darker Brown for text */
             display: flex;
             flex-direction: column;
             min-height: 100vh;
         }
         .navbar-custom {
-            background-color: #8B4513; /* SaddleBrown - darker coffee tone */
+            background-color: #6D4C41; /* Brown - main coffee tone */
             color: #FFFFFF;
         }
         .navbar-custom .navbar-brand,
@@ -27,75 +28,89 @@
         .navbar-custom .btn {
             color: #FFFFFF;
         }
+        .navbar-custom .navbar-brand:hover,
+        .navbar-custom .nav-link:hover {
+            color: #E0E0E0;
+        }
         .navbar-custom .btn-outline-light:hover {
-            color: #8B4513;
+            color: #6D4C41;
             background-color: #FFFFFF;
         }
+        .navbar-toggler-icon { /* Custom color for toggler icon */
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 0.8)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+        }
+
         .btn-primary-custom {
-            background-color: #A0522D; /* Sienna - coffee tone */
-            border-color: #A0522D;
+            background-color: #795548; /* Brown */
+            border-color: #795548;
             color: #FFFFFF;
         }
         .btn-primary-custom:hover {
-            background-color: #804224;
-            border-color: #804224;
+            background-color: #5D4037; /* Darker Brown */
+            border-color: #5D4037;
         }
         .btn-secondary-custom {
-            background-color: #556B2F; /* DarkOliveGreen - nature tone */
-            border-color: #556B2F;
-            color: #FFFFFF;
+            background-color: #8BC34A; /* Light Green - nature tone */
+            border-color: #8BC34A;
+            color: #333333; /* Darker text for better contrast on light green */
         }
         .btn-secondary-custom:hover {
-            background-color: #445625;
-            border-color: #445625;
+            background-color: #7CB342; /* Darker Light Green */
+            border-color: #7CB342;
+            color: #333333;
         }
         .card {
-            border: 1px solid #D2B48C; /* Tan - light brown border */
-            border-radius: 0.5rem;
-            margin-bottom: 1rem;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border: 1px solid #D7CCC8; /* Light Brown Grey border */
+            border-radius: 0.75rem; /* Slightly more rounded */
+            margin-bottom: 1.5rem;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.08);
         }
         .card-header-custom {
-            background-color: #D2B48C; /* Tan */
-            color: #4A3B31;
-            font-weight: bold;
-            border-bottom: 1px solid #A0522D;
+            background-color: #EFEBE9; /* Lighter, neutral tan */
+            color: #5D4037;
+            font-weight: 600; /* Semi-bold */
+            border-bottom: 1px solid #D7CCC8; /* Matching light border */
+            padding: 0.75rem 1.25rem;
         }
-        .badge-alta { background-color: #DC3545; } /* Red */
-        .badge-media { background-color: #FFC107; color: #000 !important; } /* Yellow */
-        .badge-baja { background-color: #198754; } /* Green */
+        .badge-alta { background-color: #E53935; color: white; } /* Material Red */
+        .badge-media { background-color: #FFB300; color: #424242 !important; } /* Material Amber */
+        .badge-baja { background-color: #43A047; color: white; } /* Material Green */
 
         .auth-container {
-            max-width: 450px;
-            margin: 50px auto;
-            padding: 30px;
+            max-width: 480px; /* Slightly wider */
+            margin: 60px auto;
+            padding: 35px;
             background-color: #FFFFFF;
             border-radius: 0.75rem;
-            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
         }
         .auth-container h2 {
-            color: #8B4513;
-            margin-bottom: 25px;
+            color: #6D4C41; /* Brown for auth titles */
+            margin-bottom: 30px;
             text-align: center;
+            font-weight: 600;
         }
-        .form-control:focus {
-            border-color: #A0522D;
-            box-shadow: 0 0 0 0.25rem rgba(160, 82, 45, 0.25);
+        .form-control, .form-select {
+            border-radius: 0.375rem; /* Bootstrap 5 default */
+        }
+        .form-control:focus, .form-select:focus {
+            border-color: #795548;
+            box-shadow: 0 0 0 0.25rem rgba(121, 85, 72, 0.25);
         }
         .footer-custom {
-            background-color: #ECECEC; /* Light gray */
-            color: #4A3B31;
-            padding: 1rem 0;
+            background-color: #F5F5F5; /* Lighter gray */
+            color: #5D4037;
+            padding: 1.5rem 0;
             text-align: center;
-            margin-top: auto; /* Pushes footer to the bottom */
+            margin-top: auto;
             font-size: 0.9rem;
-            border-top: 1px solid #D2B48C;
+            border-top: 1px solid #E0E0E0; /* Softer border */
         }
         .toast-container {
             position: fixed;
             top: 20px;
             right: 20px;
-            z-index: 1090; /* Higher than navbar */
+            z-index: 1100; /* Ensure toasts are above most elements */
         }
         .loading-overlay {
             position: fixed;
@@ -103,23 +118,28 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(255, 255, 255, 0.7);
+            background-color: rgba(251, 245, 235, 0.85); /* Semi-transparent Cosmic Latte */
             display: flex;
             justify-content: center;
             align-items: center;
-            z-index: 9999; /* Highest z-index */
+            z-index: 9999;
         }
         .loading-overlay .spinner-border {
-            width: 3rem;
-            height: 3rem;
-            color: #8B4513;
+            width: 3.5rem;
+            height: 3.5rem;
+            color: #795548; /* Brown spinner */
         }
-        /* Ensure modals are above loading overlay if needed, but typically loading blocks all */
-        .modal {
-            z-index: 1050; /* Default Bootstrap modal z-index */
+        .modal-header {
+            background-color: #EFEBE9;
+            color: #5D4037;
+            border-bottom: 1px solid #D7CCC8;
         }
-        .modal-backdrop {
-            z-index: 1040; /* Default Bootstrap backdrop z-index */
+        .modal-title {
+            font-weight: 600;
+        }
+        .app-title-icon {
+            margin-right: 8px;
+            font-size: 1.3em;
         }
     </style>
 </head>
@@ -136,73 +156,73 @@
 
     <div id="authSection" class="container">
         <div id="loginView" class="auth-container">
-            <h2><i class="fas fa-coffee"></i> Iniciar Sesión</h2>
+            <h2><i class="fas fa-door-open me-2"></i> Iniciar Sesión</h2>
             <form id="loginForm">
                 <div class="mb-3">
-                    <label for="loginEmail" class="form-label">Correo Electrónico</label>
+                    <label for="loginEmail" class="form-label">Correo Electrónico del Empleado</label>
                     <input type="email" class="form-control" id="loginEmail" required>
                 </div>
                 <div class="mb-3">
                     <label for="loginPassword" class="form-label">Contraseña</label>
                     <input type="password" class="form-control" id="loginPassword" required>
                 </div>
-                <button type="submit" class="btn btn-primary-custom w-100 mb-2"><i class="fas fa-sign-in-alt"></i> Entrar</button>
+                <button type="submit" class="btn btn-primary-custom w-100 mb-2 py-2"><i class="fas fa-sign-in-alt me-1"></i> Entrar</button>
             </form>
             <p class="text-center mb-1">
-                <a href="#" id="showRegisterLink">¿No tienes cuenta? Regístrate</a>
+                <a href="#" id="showRegisterLink" class="text-decoration-none">¿No tienes cuenta? Regístrate</a>
             </p>
             <p class="text-center">
-                <a href="#" id="showForgotPasswordLink">¿Olvidaste tu contraseña?</a>
+                <a href="#" id="showForgotPasswordLink" class="text-decoration-none">¿Olvidaste tu contraseña?</a>
             </p>
         </div>
 
         <div id="registerView" class="auth-container d-none">
-            <h2><i class="fas fa-user-plus"></i> Registrar Empleado</h2>
+            <h2><i class="fas fa-user-plus me-2"></i> Registrar Nuevo Empleado</h2>
             <form id="registerForm">
                 <div class="mb-3">
                     <label for="registerEmail" class="form-label">Correo Electrónico</label>
                     <input type="email" class="form-control" id="registerEmail" required>
                 </div>
                 <div class="mb-3">
-                    <label for="registerPassword" class="form-label">Contraseña</label>
+                    <label for="registerPassword" class="form-label">Contraseña (mín. 6 caracteres)</label>
                     <input type="password" class="form-control" id="registerPassword" required minlength="6">
                 </div>
-                <button type="submit" class="btn btn-primary-custom w-100 mb-2"><i class="fas fa-user-plus"></i> Registrarse</button>
+                <button type="submit" class="btn btn-primary-custom w-100 mb-2 py-2"><i class="fas fa-user-plus me-1"></i> Registrarse</button>
             </form>
             <p class="text-center">
-                <a href="#" id="showLoginLinkFromRegister">¿Ya tienes cuenta? Inicia Sesión</a>
+                <a href="#" id="showLoginLinkFromRegister" class="text-decoration-none">¿Ya tienes cuenta? Inicia Sesión</a>
             </p>
         </div>
 
         <div id="forgotPasswordView" class="auth-container d-none">
-            <h2><i class="fas fa-key"></i> Recuperar Contraseña</h2>
+            <h2><i class="fas fa-key me-2"></i> Recuperar Contraseña</h2>
             <form id="forgotPasswordForm">
                 <div class="mb-3">
-                    <label for="forgotPasswordEmail" class="form-label">Correo Electrónico</label>
+                    <label for="forgotPasswordEmail" class="form-label">Correo Electrónico Registrado</label>
                     <input type="email" class="form-control" id="forgotPasswordEmail" required>
                 </div>
-                <button type="submit" class="btn btn-primary-custom w-100 mb-2"><i class="fas fa-paper-plane"></i> Enviar Enlace</button>
+                <button type="submit" class="btn btn-primary-custom w-100 mb-2 py-2"><i class="fas fa-paper-plane me-1"></i> Enviar Enlace de Recuperación</button>
             </form>
             <p class="text-center">
-                <a href="#" id="showLoginLinkFromForgotPassword">Volver a Iniciar Sesión</a>
+                <a href="#" id="showLoginLinkFromForgotPassword" class="text-decoration-none">Volver a Iniciar Sesión</a>
             </p>
         </div>
     </div>
 
     <div id="appSection" class="d-none flex-grow-1">
-        <nav class="navbar navbar-expand-lg navbar-custom mb-4">
+        <nav class="navbar navbar-expand-lg navbar-custom mb-4 shadow-sm">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#"><i class="fas fa-mug-hot"></i> ExportCafé Tickets</a>
+                <a class="navbar-brand" href="#"><i class="fas fa-mug-saucer app-title-icon"></i>ExportCafé Tickets</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon" style="filter: invert(1);"></span>
+                    <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav ms-auto">
+                    <ul class="navbar-nav ms-auto align-items-center">
                         <li class="nav-item">
                             <span class="nav-link" id="currentUserEmail"></span>
                         </li>
                         <li class="nav-item">
-                            <button class="btn btn-outline-light" id="logoutButton"><i class="fas fa-sign-out-alt"></i> Salir</button>
+                            <button class="btn btn-outline-light" id="logoutButton"><i class="fas fa-sign-out-alt me-1"></i> Salir</button>
                         </li>
                     </ul>
                 </div>
@@ -210,15 +230,15 @@
         </nav>
 
         <div class="container">
-            <div class="row mb-3">
-                <div class="col-md-6">
-                    <button class="btn btn-primary-custom" data-bs-toggle="modal" data-bs-target="#createTicketModal">
-                        <i class="fas fa-plus-circle"></i> Crear Nuevo Ticket
+            <div class="row mb-4 align-items-center">
+                <div class="col-md-6 mb-2 mb-md-0">
+                    <button class="btn btn-primary-custom btn-lg" data-bs-toggle="modal" data-bs-target="#createTicketModal">
+                        <i class="fas fa-plus-circle me-1"></i> Crear Nuevo Ticket
                     </button>
                 </div>
                 <div class="col-md-6 text-md-end">
-                    <button class="btn btn-secondary-custom" id="exportTicketsButton">
-                        <i class="fas fa-file-csv"></i> Exportar Tickets a CSV
+                    <button class="btn btn-secondary-custom btn-lg" id="exportTicketsButton">
+                        <i class="fas fa-file-csv me-1"></i> Exportar a CSV
                     </button>
                 </div>
             </div>
@@ -226,21 +246,25 @@
             <div class="row" id="ticketList">
                 </div>
 
-            <div class="mt-5 mb-4">
-                <h3><i class="fas fa-chart-bar"></i> Estadísticas de Tickets por Prioridad</h3>
-                <canvas id="priorityChart" width="400" height="200"></canvas>
+            <div class="mt-5 mb-5">
+                <h3 class="mb-3"><i class="fas fa-chart-pie me-2"></i> Estadísticas de Tickets por Prioridad</h3>
+                <div class="card">
+                    <div class="card-body">
+                        <canvas id="priorityChart" style="min-height: 250px; max-height: 350px;"></canvas>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
     <div class="modal fade" id="createTicketModal" tabindex="-1" aria-labelledby="createTicketModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
             <div class="modal-content">
-                <div class="modal-header card-header-custom">
-                    <h5 class="modal-title" id="createTicketModalLabel"><i class="fas fa-file-alt"></i> Crear Nuevo Ticket de Pedido</h5>
+                <div class="modal-header">
+                    <h5 class="modal-title" id="createTicketModalLabel"><i class="fas fa-file-signature me-2"></i>Crear Nuevo Ticket de Pedido</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body">
+                <div class="modal-body p-4">
                     <form id="createTicketForm">
                         <div class="row">
                             <div class="col-md-6 mb-3">
@@ -287,8 +311,27 @@
                                 <option value="Cerrado">Cerrado</option>
                             </select>
                         </div>
-                        <button type="submit" class="btn btn-primary-custom w-100"><i class="fas fa-save"></i> Guardar Ticket</button>
+                        <button type="submit" class="btn btn-primary-custom w-100 py-2"><i class="fas fa-save me-1"></i> Guardar Ticket</button>
                     </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="deleteConfirmModal" tabindex="-1" aria-labelledby="deleteConfirmModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="deleteConfirmModalLabel"><i class="fas fa-exclamation-triangle text-danger me-2"></i> Confirmar Eliminación</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>¿Estás seguro de que quieres eliminar este ticket? Esta acción no se puede deshacer.</p>
+                    <p><strong>Folio:</strong> <span id="deleteTicketFolio" class="fw-bold"></span></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="fas fa-times-circle me-1"></i> Cancelar</button>
+                    <button type="button" class="btn btn-danger" id="confirmDeleteTicketButton"><i class="fas fa-trash-alt me-1"></i> Eliminar</button>
                 </div>
             </div>
         </div>
@@ -296,9 +339,8 @@
     
     <footer class="footer-custom">
         Exportación de Café S.A. de C.V. &copy; <span id="currentYear"></span>. Todos los derechos reservados.
-        <div id="currentUserIdDisplay" class="mt-1" style="font-size: 0.8em; color: #6c757d;"></div>
+        <div id="currentUserIdDisplay" class="mt-1" style="font-size: 0.8em; color: #888;"></div>
     </footer>
-
 
     <script type="module">
         // Firebase SDK Imports
@@ -309,7 +351,9 @@
             signInWithEmailAndPassword, 
             signOut, 
             onAuthStateChanged,
-            sendPasswordResetEmail
+            sendPasswordResetEmail,
+            signInWithCustomToken,
+            signInAnonymously
         } from "https://www.gstatic.com/firebasejs/11.8.1/firebase-auth.js";
         import { 
             getFirestore, 
@@ -322,30 +366,31 @@
             query, 
             orderBy,
             serverTimestamp,
-            setDoc, 
-            updateDoc,
-            writeBatch
+            setLogLevel // For debugging
+            // Removed unused: setDoc, updateDoc, writeBatch
         } from "https://www.gstatic.com/firebasejs/11.8.1/firebase-firestore.js";
-        // import { setLogLevel } from "https://www.gstatic.com/firebasejs/11.8.1/firebase-firestore.js"; // Uncomment for debugging
 
-        // Firebase Configuration (as provided by user)
-        const firebaseConfig = {
-            apiKey: "AIzaSyAEGfwsxOeHt02tTV6DFxhn5KM61XkOM7A",
-            authDomain: "ejercicio-2-44a29.firebaseapp.com",
-            projectId: "ejercicio-2-44a29",
-            storageBucket: "ejercicio-2-44a29.appspot.com", // Using .appspot.com as typical, adjust if .firebasestorage.app is confirmed and working
-            messagingSenderId: "79554506031",
-            appId: "1:79554506031:web:dc401d61ab9f7ab85785da"
+        // Firebase Configuration - Will be overridden by __firebase_config if available
+        const fallbackFirebaseConfig = {
+            apiKey: "YOUR_API_KEY", // Placeholder - MUST be provided by __firebase_config
+            authDomain: "YOUR_AUTH_DOMAIN",
+            projectId: "YOUR_PROJECT_ID",
+            storageBucket: "YOUR_STORAGE_BUCKET.firebasestorage.app", // Corrected suffix
+            messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+            appId: "YOUR_APP_ID"
         };
+
+        const firebaseConfigJson = typeof __firebase_config !== 'undefined' ? __firebase_config : JSON.stringify(fallbackFirebaseConfig);
+        const firebaseConfig = JSON.parse(firebaseConfigJson);
         
         // Initialize Firebase
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app);
         const db = getFirestore(app);
-        // setLogLevel('debug'); // For detailed Firestore logs
+        setLogLevel('debug'); // For detailed Firestore logs during development
 
         // App ID for Firestore paths
-        const currentAppId = firebaseConfig.appId || 'default-cafe-app-id'; // Use provided appId
+        const currentAppId = typeof __app_id !== 'undefined' ? __app_id : firebaseConfig.appId || 'default-cafe-app-id';
         const ticketsCollectionPath = `/artifacts/${currentAppId}/public/data/tickets`;
         
         // DOM Elements
@@ -368,7 +413,8 @@
         const exportTicketsButton = document.getElementById('exportTicketsButton');
         
         let priorityChartInstance = null;
-        let currentTicketsData = []; // To store tickets for chart and export
+        let currentTicketsData = []; 
+        let currentFirebaseUser = null; // To store the Firebase user object
 
         // Utility to show/hide loading overlay
         function showLoading(show) {
@@ -379,7 +425,7 @@
         function showToast(message, type = 'success') {
             const toastId = 'toast-' + Date.now();
             const toastHTML = `
-                <div id="${toastId}" class="toast align-items-center text-white bg-${type === 'success' ? 'success' : 'danger'} border-0" role="alert" aria-live="assertive" aria-atomic="true">
+                <div id="${toastId}" class="toast align-items-center text-white bg-${type === 'success' ? 'success' : (type === 'danger' ? 'danger' : 'info')} border-0" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="5000">
                     <div class="d-flex">
                         <div class="toast-body">
                             ${message}
@@ -391,91 +437,117 @@
             document.querySelector('.toast-container').insertAdjacentHTML('beforeend', toastHTML);
             const toastElement = new bootstrap.Toast(document.getElementById(toastId));
             toastElement.show();
-            // Optional: Remove toast from DOM after it's hidden
             document.getElementById(toastId).addEventListener('hidden.bs.toast', function () {
                 this.remove();
             });
         }
 
-        // Auth View Toggles
-        document.getElementById('showRegisterLink').addEventListener('click', (e) => {
-            e.preventDefault();
-            loginView.classList.add('d-none');
-            forgotPasswordView.classList.add('d-none');
-            registerView.classList.remove('d-none');
-        });
-        document.getElementById('showLoginLinkFromRegister').addEventListener('click', (e) => {
-            e.preventDefault();
-            registerView.classList.add('d-none');
-            loginView.classList.remove('d-none');
-        });
-        document.getElementById('showForgotPasswordLink').addEventListener('click', (e) => {
-            e.preventDefault();
-            loginView.classList.add('d-none');
-            forgotPasswordView.classList.remove('d-none');
-        });
-        document.getElementById('showLoginLinkFromForgotPassword').addEventListener('click', (e) => {
-            e.preventDefault();
-            forgotPasswordView.classList.add('d-none');
-            loginView.classList.remove('d-none');
-        });
+        // Auth View Toggles (no changes needed here, just ensuring they exist)
+        document.getElementById('showRegisterLink').addEventListener('click', (e) => { e.preventDefault(); loginView.classList.add('d-none'); forgotPasswordView.classList.add('d-none'); registerView.classList.remove('d-none'); });
+        document.getElementById('showLoginLinkFromRegister').addEventListener('click', (e) => { e.preventDefault(); registerView.classList.add('d-none'); loginView.classList.remove('d-none'); });
+        document.getElementById('showForgotPasswordLink').addEventListener('click', (e) => { e.preventDefault(); loginView.classList.add('d-none'); forgotPasswordView.classList.remove('d-none'); });
+        document.getElementById('showLoginLinkFromForgotPassword').addEventListener('click', (e) => { e.preventDefault(); forgotPasswordView.classList.add('d-none'); loginView.classList.remove('d-none'); });
 
-
+        // Initial Firebase Authentication (Custom Token or Anonymous)
+        async function performInitialAuth() {
+            showLoading(true); // Show loading during this critical phase
+            try {
+                if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
+                    console.log("Attempting sign-in with custom token provided by environment.");
+                    await signInWithCustomToken(auth, __initial_auth_token);
+                } else {
+                    console.log("No custom token, attempting sign-in anonymously for base session.");
+                    await signInAnonymously(auth);
+                }
+                console.log("Initial Firebase auth step completed.");
+            } catch (error) {
+                console.error("Error during initial Firebase auth:", error);
+                showToast(`Error de autenticación inicial con Firebase: ${error.message}`, 'danger');
+                // The onAuthStateChanged will still run and might show login forms if user is null.
+            } 
+            // showLoading(false) is handled by onAuthStateChanged which will fire after this.
+        }
+        
         // Auth State Observer
         onAuthStateChanged(auth, (user) => {
-            showLoading(true);
+            showLoading(true); // Show loading while processing auth state change
+            currentFirebaseUser = user; // Store the current user (can be anonymous, custom token, or email/pass user)
             if (user) {
-                authSection.classList.add('d-none');
-                appSection.classList.remove('d-none');
-                currentUserEmailDisplay.textContent = `Usuario: ${user.email}`;
-                currentUserIdDisplay.textContent = `ID Empleado: ${user.uid}`; // Display user ID
-                loadTickets();
+                console.log("Firebase Auth state changed. User UID:", user.uid, "Is Anonymous:", user.isAnonymous);
+                
+                // If user is from custom token or anonymous, they are "authenticated" to Firebase
+                // but might not be an "employee" yet in the app's context.
+                // The app specific login forms are still relevant for employee actions.
+                
+                authSection.classList.add('d-none'); // Hide generic auth section (login/register forms)
+                appSection.classList.remove('d-none'); // Show main application
+                
+                if (user.isAnonymous) {
+                    currentUserEmailDisplay.textContent = `Sesión Anónima`;
+                } else if (user.email) {
+                    currentUserEmailDisplay.textContent = `Empleado: ${user.email}`;
+                } else {
+                    currentUserEmailDisplay.textContent = `Usuario Autenticado`;
+                }
+                currentUserIdDisplay.textContent = `ID Sesión Firebase: ${user.uid.substring(0,10)}...`;
+                
+                loadTickets(); // Load tickets for any authenticated user (as per public path)
             } else {
-                authSection.classList.remove('d-none');
-                appSection.classList.add('d-none');
+                console.log("Firebase Auth state changed. No user.");
+                authSection.classList.remove('d-none'); // Show login/register forms
+                appSection.classList.add('d-none');     // Hide main application
                 currentUserEmailDisplay.textContent = '';
                 currentUserIdDisplay.textContent = '';
                 if (priorityChartInstance) {
                     priorityChartInstance.destroy();
                     priorityChartInstance = null;
                 }
-                ticketListDiv.innerHTML = ''; // Clear tickets if logged out
+                ticketListDiv.innerHTML = '<p class="text-center col-12">Inicia sesión para ver los tickets.</p>';
                 currentTicketsData = [];
             }
             showLoading(false);
         });
 
-        // Register
+        // Call initial auth function once when the script loads
+        performInitialAuth().catch(err => {
+            console.error("Failed to execute performInitialAuth:", err);
+            // Fallback or error display if performInitialAuth itself throws an unhandled error
+            showLoading(false); // Ensure loading is hidden
+        });
+
+
+        // Register Employee (App-specific)
         registerForm.addEventListener('submit', async (e) => {
             e.preventDefault();
             showLoading(true);
             const email = document.getElementById('registerEmail').value;
             const password = document.getElementById('registerPassword').value;
             try {
+                // This creates a new Firebase user or logs in if already exists (Firebase handles this)
                 await createUserWithEmailAndPassword(auth, email, password);
-                showToast('¡Registro exitoso! Por favor, inicia sesión.', 'success');
+                showToast('¡Empleado registrado exitosamente! Serás redirigido.', 'success');
                 registerForm.reset();
-                registerView.classList.add('d-none');
-                loginView.classList.remove('d-none');
+                // onAuthStateChanged will handle UI changes to show app section.
             } catch (error) {
-                console.error("Error en registro:", error);
+                console.error("Error en registro de empleado:", error);
                 showToast(`Error en registro: ${error.message}`, 'danger');
             }
             showLoading(false);
         });
 
-        // Login
+        // Login Employee (App-specific)
         loginForm.addEventListener('submit', async (e) => {
             e.preventDefault();
             showLoading(true);
             const email = document.getElementById('loginEmail').value;
             const password = document.getElementById('loginPassword').value;
             try {
+                // This signs in the specific employee
                 await signInWithEmailAndPassword(auth, email, password);
-                // onAuthStateChanged will handle UI changes
                 loginForm.reset();
+                // onAuthStateChanged will handle UI changes.
             } catch (error) {
-                console.error("Error en inicio de sesión:", error);
+                console.error("Error en inicio de sesión de empleado:", error);
                 showToast(`Error en inicio de sesión: ${error.message}`, 'danger');
             }
             showLoading(false);
@@ -486,7 +558,10 @@
             showLoading(true);
             try {
                 await signOut(auth);
-                // onAuthStateChanged will handle UI changes
+                // onAuthStateChanged will handle UI changes (will show login forms).
+                // After signOut, to re-enable base anonymous session if desired:
+                // await performInitialAuth(); // This would re-trigger anonymous login.
+                // For this app, signing out means going back to employee login screen.
             } catch (error) {
                 console.error("Error al cerrar sesión:", error);
                 showToast(`Error al cerrar sesión: ${error.message}`, 'danger');
@@ -514,32 +589,41 @@
 
         // Folio Generation
         async function generateNextFolio() {
-            const ticketsRef = collection(db, ticketsCollectionPath);
-            const snapshot = await getDocs(ticketsRef);
-            let maxNum = 0;
-            snapshot.forEach(doc => {
-                const folio = doc.data().folio;
-                if (folio && folio.startsWith("COFFEE-")) {
-                    const num = parseInt(folio.substring(7), 10);
-                    if (!isNaN(num) && num > maxNum) {
-                        maxNum = num;
-                    }
+            const ticketsColRef = collection(db, ticketsCollectionPath);
+            const q = query(ticketsColRef, orderBy("folio", "desc")); // Order by folio to find the max
+            
+            try {
+                const snapshot = await getDocs(q);
+                let maxNum = 0;
+                if (!snapshot.empty) {
+                    // Get the first document (which should have the highest folio if ordering works and folios are consistent)
+                    // A more robust way is to iterate, but this is simpler if folios are COFFEE-XXX
+                    snapshot.forEach(docSnap => {
+                        const folio = docSnap.data().folio;
+                        if (folio && folio.startsWith("COFFEE-")) {
+                            const num = parseInt(folio.substring(7), 10);
+                            if (!isNaN(num) && num > maxNum) {
+                                maxNum = num;
+                            }
+                        }
+                    });
                 }
-            });
-            return `COFFEE-${String(maxNum + 1).padStart(3, '0')}`;
+                return `COFFEE-${String(maxNum + 1).padStart(3, '0')}`;
+            } catch (error) {
+                console.error("Error generating folio, falling back to timestamp based:", error);
+                // Fallback folio if query fails or no tickets exist
+                return `COFFEE-TS-${Date.now().toString().slice(-5)}`;
+            }
         }
 
         // Create Ticket
         createTicketForm.addEventListener('submit', async (e) => {
             e.preventDefault();
-            showLoading(true);
-            const user = auth.currentUser;
-            if (!user) {
-                showToast('Debes iniciar sesión para crear un ticket.', 'danger');
-                showLoading(false);
+            if (!currentFirebaseUser || currentFirebaseUser.isAnonymous) { // Ensure an employee (not anonymous) is creating
+                showToast('Debes iniciar sesión como empleado para crear un ticket.', 'danger');
                 return;
             }
-
+            showLoading(true);
             const folio = await generateNextFolio();
             const newTicket = {
                 folio: folio,
@@ -551,14 +635,14 @@
                 kilogramosCafe: parseFloat(document.getElementById('ticketKilogramos').value),
                 tipoProducto: document.getElementById('ticketTipoProducto').value,
                 paisEnvio: document.getElementById('ticketPaisEnvio').value,
-                employeeId: user.uid,
-                employeeEmail: user.email, // Store email for display convenience
+                employeeId: currentFirebaseUser.uid, // UID of the logged-in employee
+                employeeEmail: currentFirebaseUser.email, 
                 createdAt: serverTimestamp() 
             };
 
             try {
-                const ticketsRef = collection(db, ticketsCollectionPath);
-                await addDoc(ticketsRef, newTicket);
+                const ticketsColRef = collection(db, ticketsCollectionPath);
+                await addDoc(ticketsColRef, newTicket);
                 showToast('Ticket creado exitosamente.', 'success');
                 createTicketForm.reset();
                 const modalInstance = bootstrap.Modal.getInstance(document.getElementById('createTicketModal'));
@@ -572,15 +656,20 @@
         
         // Load and Display Tickets
         function loadTickets() {
-            const ticketsRef = collection(db, ticketsCollectionPath);
-            const q = query(ticketsRef, orderBy("createdAt", "desc"));
+            if (!currentFirebaseUser) { // Don't load if no firebase session at all
+                 ticketListDiv.innerHTML = '<p class="text-center col-12">Esperando sesión de Firebase...</p>';
+                 return;
+            }
+            const ticketsColRef = collection(db, ticketsCollectionPath);
+            const q_tickets = query(ticketsColRef, orderBy("createdAt", "desc"));
 
-            onSnapshot(q, (snapshot) => {
-                currentTicketsData = []; // Reset before populating
+            // onSnapshot for real-time updates
+            onSnapshot(q_tickets, (snapshot) => {
+                currentTicketsData = []; 
                 let ticketsHtml = '';
-                snapshot.forEach((doc) => {
-                    const ticket = doc.data();
-                    ticket.id = doc.id; // Store Firestore document ID
+                snapshot.forEach((docSnap) => {
+                    const ticket = docSnap.data();
+                    ticket.id = docSnap.id; 
                     currentTicketsData.push(ticket);
 
                     let priorityBadgeClass = '';
@@ -588,67 +677,86 @@
                         case 'Alta': priorityBadgeClass = 'badge-alta'; break;
                         case 'Media': priorityBadgeClass = 'badge-media'; break;
                         case 'Baja': priorityBadgeClass = 'badge-baja'; break;
-                        default: priorityBadgeClass = 'bg-secondary';
+                        default: priorityBadgeClass = 'bg-secondary text-white';
                     }
                     
-                    const createdAtDate = ticket.createdAt?.toDate ? ticket.createdAt.toDate().toLocaleDateString() : 'N/A';
+                    const createdAtDate = ticket.createdAt?.toDate ? ticket.createdAt.toDate().toLocaleDateString('es-ES', { year: 'numeric', month: 'short', day: 'numeric' }) : 'N/A';
 
                     ticketsHtml += `
-                        <div class="col-md-6 col-lg-4 mb-3">
+                        <div class="col-md-6 col-lg-4">
                             <div class="card h-100">
                                 <div class="card-header card-header-custom d-flex justify-content-between align-items-center">
-                                    <span>${ticket.folio} - ${ticket.titulo}</span>
-                                    <span class="badge ${priorityBadgeClass} text-white">${ticket.prioridad}</span>
+                                    <span class="fw-bold">${ticket.folio}</span>
+                                    <span class="badge ${priorityBadgeClass} py-1 px-2">${ticket.prioridad}</span>
                                 </div>
                                 <div class="card-body">
-                                    <p class="card-text"><strong>Cliente:</strong> ${ticket.nombreCliente}</p>
-                                    <p class="card-text"><strong>Producto:</strong> ${ticket.tipoProducto} (${ticket.kilogramosCafe} kg)</p>
-                                    <p class="card-text"><strong>Destino:</strong> ${ticket.paisEnvio}</p>
-                                    <p class="card-text"><strong>Estado:</strong> <span class="badge ${ticket.estado === 'Abierto' ? 'bg-success' : 'bg-danger'}">${ticket.estado}</span></p>
-                                    <p class="card-text"><small class="text-muted">Creado por: ${ticket.employeeEmail || ticket.employeeId} el ${createdAtDate}</small></p>
-                                    <p class="card-text"><small><em>${ticket.descripcion.substring(0,100)}${ticket.descripcion.length > 100 ? '...' : ''}</em></small></p>
+                                    <h5 class="card-title mb-2" style="color: #795548;">${ticket.titulo}</h5>
+                                    <p class="card-text mb-1"><strong><i class="fas fa-user me-1"></i>Cliente:</strong> ${ticket.nombreCliente}</p>
+                                    <p class="card-text mb-1"><strong><i class="fas fa-box me-1"></i>Producto:</strong> ${ticket.tipoProducto} (${ticket.kilogramosCafe} kg)</p>
+                                    <p class="card-text mb-1"><strong><i class="fas fa-globe-americas me-1"></i>Destino:</strong> ${ticket.paisEnvio}</p>
+                                    <p class="card-text mb-2"><strong><i class="fas fa-info-circle me-1"></i>Estado:</strong> <span class="badge ${ticket.estado === 'Abierto' ? 'bg-success' : 'bg-danger'} text-white py-1 px-2">${ticket.estado}</span></p>
+                                    <p class="card-text fst-italic text-muted border-top pt-2 mt-2"><small>${ticket.descripcion.substring(0,100)}${ticket.descripcion.length > 100 ? '...' : ''}</small></p>
                                 </div>
-                                <div class="card-footer bg-transparent border-top-0 text-end">
-                                    <button class="btn btn-sm btn-danger delete-ticket-btn" data-id="${ticket.id}">
-                                        <i class="fas fa-trash-alt"></i> Eliminar
-                                    </button>
-                                    </div>
+                                <div class="card-footer bg-light d-flex justify-content-between align-items-center">
+                                    <small class="text-muted">Por: ${ticket.employeeEmail ? ticket.employeeEmail.split('@')[0] : 'Desconocido'} <br> ${createdAtDate}</small>
+                                    ${ (currentFirebaseUser && !currentFirebaseUser.isAnonymous && currentFirebaseUser.uid === ticket.employeeId) || (currentFirebaseUser && !currentFirebaseUser.isAnonymous) ? // Allow any logged-in non-anon employee to delete for now, or restrict to creator
+                                    `<button class="btn btn-sm btn-outline-danger delete-ticket-btn" data-id="${ticket.id}" title="Eliminar Ticket">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </button>` : ''}
+                                </div>
                             </div>
                         </div>
                     `;
                 });
-                ticketListDiv.innerHTML = ticketsHtml || '<p class="text-center col-12">No hay tickets para mostrar.</p>';
+                ticketListDiv.innerHTML = ticketsHtml || '<p class="text-center col-12 my-5"><i class="fas fa-folder-open fa-2x text-muted mb-2"></i><br>No hay tickets para mostrar.</p>';
                 updatePriorityChart();
-                addDeleteEventListeners();
             }, (error) => {
                 console.error("Error al cargar tickets: ", error);
                 showToast(`Error al cargar tickets: ${error.message}`, 'danger');
-                ticketListDiv.innerHTML = '<p class="text-center col-12 text-danger">Error al cargar tickets.</p>';
+                ticketListDiv.innerHTML = '<p class="text-center col-12 text-danger">Error al cargar tickets. Revisa la consola.</p>';
             });
         }
         
-        // Add event listeners for delete buttons
-        function addDeleteEventListeners() {
-            document.querySelectorAll('.delete-ticket-btn').forEach(button => {
-                button.addEventListener('click', async (e) => {
-                    const ticketId = e.currentTarget.dataset.id;
-                    // Custom confirmation dialog (non-blocking)
-                    if (confirm('¿Estás seguro de que quieres eliminar este ticket? Esta acción no se puede deshacer.')) {
-                        showLoading(true);
-                        try {
-                            const ticketDocRef = doc(db, ticketsCollectionPath, ticketId);
-                            await deleteDoc(ticketDocRef);
-                            showToast('Ticket eliminado exitosamente.', 'success');
-                            // The onSnapshot listener will automatically update the list
-                        } catch (error) {
-                            console.error("Error al eliminar ticket:", error);
-                            showToast(`Error al eliminar ticket: ${error.message}`, 'danger');
-                        }
-                        showLoading(false);
-                    }
-                });
-            });
+        // Delete Ticket Functionality (Modal based)
+        let ticketIdToDelete = null;
+        const deleteConfirmModalEl = document.getElementById('deleteConfirmModal');
+        const deleteConfirmModalInstance = new bootstrap.Modal(deleteConfirmModalEl);
+        const confirmDeleteTicketButton = document.getElementById('confirmDeleteTicketButton');
+
+        async function proceedWithDelete() {
+            if (ticketIdToDelete) {
+                showLoading(true);
+                deleteConfirmModalInstance.hide();
+                try {
+                    const ticketDocRef = doc(db, ticketsCollectionPath, ticketIdToDelete);
+                    await deleteDoc(ticketDocRef);
+                    showToast('Ticket eliminado exitosamente.', 'success');
+                } catch (error) {
+                    console.error("Error al eliminar ticket:", error);
+                    showToast(`Error al eliminar ticket: ${error.message}`, 'danger');
+                } finally {
+                    ticketIdToDelete = null; 
+                    showLoading(false);
+                }
+            }
         }
+        confirmDeleteTicketButton.addEventListener('click', proceedWithDelete);
+
+        // Event delegation for delete buttons on ticketListDiv
+        ticketListDiv.addEventListener('click', function(e) {
+            const targetButton = e.target.closest('.delete-ticket-btn');
+            if (targetButton) {
+                if (!currentFirebaseUser || currentFirebaseUser.isAnonymous) {
+                    showToast('Debes iniciar sesión como empleado para eliminar tickets.', 'warning');
+                    return;
+                }
+                ticketIdToDelete = targetButton.dataset.id;
+                const ticket = currentTicketsData.find(t => t.id === ticketIdToDelete);
+                document.getElementById('deleteTicketFolio').textContent = ticket ? ticket.folio : 'Desconocido';
+                deleteConfirmModalInstance.show();
+            }
+        });
+
 
         // Update Priority Chart
         function updatePriorityChart() {
@@ -665,16 +773,17 @@
                     label: 'Número de Tickets',
                     data: Object.values(priorityCounts),
                     backgroundColor: [
-                        'rgba(220, 53, 69, 0.7)', // Alta (Red)
-                        'rgba(255, 193, 7, 0.7)',  // Media (Yellow)
-                        'rgba(25, 135, 84, 0.7)'   // Baja (Green)
+                        'rgba(229, 57, 53, 0.7)', // Material Red
+                        'rgba(255, 179, 0, 0.7)',  // Material Amber
+                        'rgba(67, 160, 71, 0.7)'   // Material Green
                     ],
                     borderColor: [
-                        'rgba(220, 53, 69, 1)',
-                        'rgba(255, 193, 7, 1)',
-                        'rgba(25, 135, 84, 1)'
+                        '#E53935',
+                        '#FFB300',
+                        '#43A047'
                     ],
-                    borderWidth: 1
+                    borderWidth: 1.5,
+                    borderRadius: 5,
                 }]
             };
 
@@ -685,18 +794,10 @@
                     responsive: true,
                     maintainAspectRatio: false,
                     scales: {
-                        y: {
-                            beginAtZero: true,
-                            ticks: {
-                                stepSize: 1 // Ensure y-axis shows whole numbers for counts
-                            }
-                        }
+                        y: { beginAtZero: true, ticks: { stepSize: 1, color: '#5D4037' }, grid: { color: '#ECEFF1' } },
+                        x: { ticks: { color: '#5D4037' }, grid: { display: false } }
                     },
-                    plugins: {
-                        legend: {
-                            display: false // Can be true if preferred
-                        }
-                    }
+                    plugins: { legend: { display: false } }
                 }
             };
 
@@ -710,43 +811,34 @@
         // Export Tickets to CSV
         exportTicketsButton.addEventListener('click', () => {
             if (currentTicketsData.length === 0) {
-                showToast('No hay tickets para exportar.', 'danger');
+                showToast('No hay tickets para exportar.', 'info');
                 return;
             }
             showLoading(true);
             const headers = [
                 "Folio", "Título", "Descripción", "Prioridad", "Estado", 
                 "Nombre Cliente", "Kilogramos Café", "Tipo Producto", "País Envío", 
-                "Creado Por (Email)", "Fecha Creación"
+                "Creado Por (Email)", "Fecha Creación (ISO)"
             ];
             const csvRows = [headers.join(',')];
 
             currentTicketsData.forEach(ticket => {
                 const createdAt = ticket.createdAt?.toDate ? ticket.createdAt.toDate().toISOString() : 'N/A';
-                // Sanitize data for CSV (especially description)
-                const description = `"${(ticket.descripcion || '').replace(/"/g, '""')}"`;
+                const description = `"${(ticket.descripcion || '').replace(/"/g, '""')}"`; // Escape double quotes
                 const titulo = `"${(ticket.titulo || '').replace(/"/g, '""')}"`;
 
                 const row = [
-                    ticket.folio,
-                    titulo,
-                    description,
-                    ticket.prioridad,
-                    ticket.estado,
-                    ticket.nombreCliente,
-                    ticket.kilogramosCafe,
-                    ticket.tipoProducto,
-                    ticket.paisEnvio,
-                    ticket.employeeEmail || ticket.employeeId,
-                    createdAt
+                    ticket.folio, titulo, description, ticket.prioridad, ticket.estado,
+                    ticket.nombreCliente, ticket.kilogramosCafe, ticket.tipoProducto, ticket.paisEnvio,
+                    ticket.employeeEmail || ticket.employeeId, createdAt
                 ];
-                csvRows.push(row.join(','));
+                csvRows.push(row.map(field => String(field)).join(',')); // Ensure all fields are strings
             });
 
             const csvString = csvRows.join('\n');
-            const blob = new Blob([csvString], { type: 'text/csv;charset=utf-8;' });
+            const blob = new Blob([String.fromCharCode(0xFEFF), csvString], { type: 'text/csv;charset=utf-8;' }); // BOM for Excel
             const link = document.createElement("a");
-            if (link.download !== undefined) { // Feature detection
+            if (link.download !== undefined) {
                 const url = URL.createObjectURL(blob);
                 link.setAttribute("href", url);
                 link.setAttribute("download", "tickets_exportacion_cafe.csv");
@@ -754,7 +846,8 @@
                 document.body.appendChild(link);
                 link.click();
                 document.body.removeChild(link);
-                URL.revokeObjectURL(url); // Clean up
+                URL.revokeObjectURL(url);
+                showToast('Tickets exportados a CSV exitosamente.', 'success');
             } else {
                 showToast('La exportación CSV no es compatible con tu navegador.', 'danger');
             }
@@ -763,10 +856,6 @@
         
         // Set current year in footer
         document.getElementById('currentYear').textContent = new Date().getFullYear();
-
-        // Initialize Bootstrap components like Modals and Toasts if needed manually
-        // (usually auto-initialized with data attributes, but good to be aware)
-        // Example: var myModal = new bootstrap.Modal(document.getElementById('createTicketModal'), options)
 
     </script>
 
